@@ -1,0 +1,16 @@
+#!/bin/make
+.PHONY: all install 
+.IGNORE: clean
+BUILD="build"
+PREFIX_X=${PREFIX}
+INSTALL_DIR=${INSTALLDIR}
+all:
+	mkdir -p .install
+install:
+	mv -t .install ${PREFIX_X}
+	mv .install/* ${INSTALL_DIR}
+	chmod u+x install.sh
+	./install.sh ${PREFIX_X}
+clean:
+	rm -rfd ${BUILD}
+	rm -rfd .install
