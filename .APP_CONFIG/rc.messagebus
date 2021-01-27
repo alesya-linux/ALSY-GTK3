@@ -1,0 +1,92 @@
+#!/bin/sh
+#
+# messagebus:   The D-BUS systemwide message bus
+#
+# chkconfig: 345 97 03
+# description:  This is a daemon which broadcasts notifications of system events \
+#               and other messages. See http://www.freedesktop.org/software/dbus/
+#
+# processname: dbus-daemon
+# pidfile: /var/run/dbus/pid
+#
+
+# Source function library.
+#. /etc/rc.d/init.d/functions
+
+# so we can rearrange this easily
+#processname=dbus-daemon
+#servicename=messagebus
+
+#RETVAL=0
+
+start() {       
+    dbus_run_already="0"
+    dbus_version="$(dbus-daemon --version | grep -i bus | cut -d" " -f5)"
+    echo "*** ALESYA (ALSY) LINUX: $(less /etc/alsy-version) ****"
+    echo "*** ALSY - Starting system message bus..."
+    echo "**********************************"
+    # проверяем что D-BUS еще не запущен
+    if [ "`pgrep dbus-daemon`" = "" ]; then 
+      echo "*** ALSY - remove dbus temporary files..."
+      rm -r /var/run/dbus/pid 2>/dev/null
+      rm -r /var/run/dbus/dbus.pid 2>/dev/null      
+      dbus_run_already="1"
+    fi
+    if [ "$GTK3_PREFIX" == "" ]; then
+      sh /etc/profile.d/ALSY-GTK3.sh
+    fi
+    if [ "$GTK3_PREFIX" == "" ]; then
+      export GTK3_PREFIX=$(cat /etc/profile.d/ALSY-GTK3.sh | grep GTK+ | sed 's/GTK3_PREFIX=//' | sed 's/\"//g')
+    fi
+    chown root:messagebus $GTK3_PREFIX/libexec/dbus-daemon-launch-helper;
+    chmod 4750 $GTK3_PREFIX/libexec/dbus-daemon-launch-helper;    
+    echo "$(dbus-daemon --version | grep -i bus)" 
+    echo "**********************************"    
+    if [ "$(echo "$dbus_run_already")" == "1" ];
+    then
+      echo -e "*** ALSY - Start Message Bus ..................................\e[32m[OK]\e[0m ***"
+      if [ -x $GTK3_PREFIX/bin/dbus-uuidgen ] ; then
+        $GTK3_PREFIX/bin/dbus-uuidgen --ensure
+      fi
+
+      if [ -x $GTK3_PREFIX/bin/dbus-daemon ];then
+        $GTK3_PREFIX/bin/dbus-daemon --system
+      fi
+    fi 
+        
+    if [ "$(ls -l /var/run/dbus | grep --regexp=pid"$")" != "" ]; 
+    then 
+      cp -r /var/run/dbus/pid /var/run/dbus/dbus.pid 
+    fi     
+}
+
+stop() {
+    echo "Stopping system message bus"
+    killall dbus-daemon
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $servicename
+        RETVAL=$?
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    reload)
+        echo "Message bus can't reload its configuration, you have to restart it"
+        RETVAL=$?
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|reload}"
+        ;;
+esac
+exit $RETVAL
