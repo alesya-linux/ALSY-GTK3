@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -28,7 +28,6 @@ fi
 INSTALLDIR=$(echo $INSTALL_DIR | sed 's/\//\\\//g' )
 sed 's/\${INSTALLDIR}/'$INSTALLDIR'/' Makefile.am > Makefile
 
-XORG_PREFIX="/usr/src/tools/XORG-7"
 SAVEPATH="$PATH"
 APKG_CONFIG_PATH="$XORG_PREFIX/lib64/pkgconfig:$GTK3_PREFIX/lib64/pkgconfig:$GTK3_PREFIX/lib/pkgconfig"
 BPKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$APKG_CONFIG_PATH"
@@ -55,6 +54,7 @@ APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 APP_COMPILE="build/compile"
 APP_PACKAGE="APP_PACKAGE"
+APP_PATCHES="APP_PATCHES"
 
 echo "Installation Log File: $(date)" > install_log.txt
 
@@ -162,6 +162,13 @@ case $packagedir in
   expat* )
     cp $APP_CONFIG/expat-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp $APP_MAKEFILE/expat-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libxml2* )
+    cp $APP_CONFIG/libxml2-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
+      cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
+    fi
   ;;
 esac
 
