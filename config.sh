@@ -96,6 +96,9 @@ APPLICATION_SITE="$PWD"
 INSTALL_APPLICATION="$packagedir"
  
 pushd $packagedir
+if [ -f install.sh ]; then
+  chmod u+x install.sh
+fi
 chmod u+x config.sh
 ./config.sh
 check_last "config"
@@ -169,6 +172,18 @@ case $packagedir in
     if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
       cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
     fi
+  ;;
+  libxslt* )
+    cp $APP_CONFIG/libxslt-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/libxslt-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp $APP_CONFIG/libxslt-install.sh $APP_COMPILE/$packagedir/install.sh
+  ;;
+  glib* )
+    cp $APP_CONFIG/glib-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/glib-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    if [ -f $APP_PATCHES/glib-2.66.4-skip_warnings-1.patch ]; then
+      cp $APP_PATCHES/glib-2.66.4-skip_warnings-1.patch $APP_COMPILE/$packagedir
+    fi    
   ;;
 esac
 
