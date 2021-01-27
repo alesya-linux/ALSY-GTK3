@@ -1,0 +1,10 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app} && make
+	mv -f install.sh ../build/${app}
+install:
+	cd ../build/${app} && ./install.sh
+	cd ../build/${app} && make install
+clean:
+	rm -rfd ../build/${app}
