@@ -1,0 +1,11 @@
+#!/bin/make
+app="@alsy.app.name"
+.PHONY: compile install
+.IGNORE: clean
+compile:
+	cd ../build/glib_build && ninja
+install:
+	cd ../build/glib_build && ninja install
+	$(MAKE) clean
+clean:
+	rm -rfd ../build/glib_build
