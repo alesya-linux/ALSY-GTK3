@@ -1,0 +1,8 @@
+#!/bin/make
+app="@app.alsy.name"
+compile:
+	cd ../build/${app} && make
+install:
+	cd ../build/${app} && make install
+clean:
+	rm -rd ../build

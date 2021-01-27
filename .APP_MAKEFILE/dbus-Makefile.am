@@ -1,0 +1,11 @@
+#!/bin/make
+app="@alsy.app.name"
+all:
+	cd ../build/${app} && make
+install:
+	cd ../build/${app} && make install
+	mkdir -p "${GTK3_PREFIX}/etc/rc.d"                         # en: for correct work of Alsy Linux, current row was modifyed (add) by Sevastyanov S.V. date 2017-09-22
+	cp -r rc.messagebus "${GTK3_PREFIX}/etc/rc.d"              # en: for correct work of Alsy Linux, current row was modifyed (add) by Sevastyanov S.V. date 2017-09-22
+	mkdir -p "${GTK3_PREFIX}/etc/dbus-1"                       # en: for correct work of Alsy Linux, current row was modifyed (add) by Sevastyanov S.V. date 2017-09-22
+	cp -r /etc/dbus-1/session.conf "${GTK3_PREFIX}/etc/dbus-1" # en: for correct work of Alsy Linux, current row was modifyed (add) by Sevastyanov S.V. date 2017-09-22
+	cp -r /etc/dbus-1/system.conf "${GTK3_PREFIX}/etc/dbus-1"  # en: for correct work of Alsy Linux, current row was modifyed (add) by Sevastyanov S.V. date 2017-09-22

@@ -1,0 +1,8 @@
+#!/bin/make
+app="@app.alsy.name"
+compile:
+	cd ../build/icu-release-68-2/icu4c/${app} && make
+install:
+	cd ../build/icu-release-68-2/icu4c/${app} && make install
+clean:
+	rm -rd ../build
