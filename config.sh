@@ -185,6 +185,10 @@ case $packagedir in
       cp $APP_PATCHES/glib-2.66.4-skip_warnings-1.patch $APP_COMPILE/$packagedir
     fi    
   ;;
+  gobject* )
+    cp $APP_CONFIG/gobject-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/gobject-Makefile.am $APP_COMPILE/$packagedir/Makefile.am    
+  ;;
 esac
 
 
