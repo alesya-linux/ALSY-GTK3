@@ -1,0 +1,11 @@
+#!/bin/make
+app="@alsy.app.name"
+.PHONY: compile install
+.IGNORE: clean
+compile:
+	cd ../build/gobj_build && ninja
+install:
+	cd ../build/gobj_build && ninja install
+	$(MAKE) clean
+clean:
+	rm -rfd ../build/gobj_build
