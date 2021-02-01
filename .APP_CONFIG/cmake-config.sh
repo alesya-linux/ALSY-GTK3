@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget https://downloads.sourceforge.net/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget https://cmake.org/files/v3.19/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
@@ -25,9 +25,12 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then         
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=RELEASE  \
-          -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$sapp \
-          -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib 
+    sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake &&
+    ./bootstrap --prefix=/usr        \
+                --system-libs        \
+                --mandir=/share/man  \
+                --no-system-jsoncpp  \
+                --no-system-librhash \
+                --docdir=/share/doc/cmake-3.19.3
   fi
 fi
