@@ -11,6 +11,7 @@ install:
 	mkdir -p ${GTK3_PREFIX}/usr/lib64
 	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* ${GTK3_PREFIX}/usr/lib64
 	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* /usr/lib64
+	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig
 	ldconfig
 prepare:
 	cd ../build/${app} && make install
