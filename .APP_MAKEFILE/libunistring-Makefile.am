@@ -1,0 +1,15 @@
+#!/bin/make
+app="@alsy.app.name"
+INSTALLDIR=${XORG_PREFIX}
+.PHONY:  compile install 
+.IGNORE: prepare clean
+compile:
+	cd ../build/${app} && make 
+install:
+	$(MAKE) prepare
+	cd ../build/${app} && make DESTDIR=${INSTALLDIR} TIC_PATH=${PWD}/../build/${app}/progs/tic install
+prepare:
+	cd ../build/${app} && make install
+	ldconfig
+clean:
+	rm -rd ../build
