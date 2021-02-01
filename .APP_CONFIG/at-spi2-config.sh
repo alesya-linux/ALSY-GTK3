@@ -26,13 +26,13 @@ mkdir -p ../build &&
 tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp  
-  rm -rfd ../atk_build
+  rm -rfd ../at_spi2_build
   if [ $? -eq 0 ]; then    
-    mkdir -p ../atk_build &&
+    mkdir -p ../at_spi2_build &&
     python3 -m pip install -U pip &&
     python3 -m pip install -U meson &&    
     python3 -m pip install -U ninja &&
     meson --prefix=$GTK3_PREFIX \
-    ../atk_build
+    ../at_spi2_build
   fi
 fi
