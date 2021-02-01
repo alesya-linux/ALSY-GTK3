@@ -140,6 +140,10 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  libunistring* )
+    cp -r $APP_CONFIG/libunistring-config.sh $APP_COMPILE/$packagedir/config.sh  
+    cp -r $APP_MAKEFILE/libunistring-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   harfbuzz* )
     cp -r $APP_CONFIG/harfbuzz-config.sh $APP_COMPILE/$packagedir/config.sh  
   ;;  
