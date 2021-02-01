@@ -32,7 +32,7 @@ if [ $? -eq 0 ]; then
     sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c} &&
     sed -i 's/test.test/#&/' python/tests/tstLastError.py && 
     sed -i 's/ TRUE/ true/' encoding.c && 
-    ./configure --prefix=$GTK3_PREFIX \
+    ./configure --prefix=/usr    \
                 --disable-static \
                 --with-history   \
                 --with-python=/usr/bin/python3
