@@ -1,8 +1,13 @@
 #!/bin/make
 app="@alsy.app.name"
 compile:
-	cd ../build/${app}/nspr && make
+	cd ../build/${app}/nss && cd tests && HOST=localhost DOMSUF=localdomain ./all.sh
 install:
-	cd ../build/${app}/nspr && make DESTDIR=${GTK3_PREFIX} install
+	cd ../build/${app}/nss && cd ../dist && install -v -m755 Linux*/lib/*.so /usr/lib
+	cd ../build/${app}/nss && cd ../dist && install -v -m644 Linux*/lib/{*.chk,libcrmf.a} /usr/lib
+	cd ../build/${app}/nss && cd ../dist && install -v -m755 -d /usr/include/nss && cp -v -RL {public,private}/nss/* /usr/include/nss
+	cd ../build/${app}/nss && cd ../dist && chmod -v 644 /usr/include/nss/*
+	cd ../build/${app}/nss && cd ../dist && install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} /usr/bin
+	cd ../build/${app}/nss && cd ../dist && install -v -m644 Linux*/lib/pkgconfig/nss.pc  /usr/lib/pkgconfig
 clean:
 	rm -rfd ../build/${app}
