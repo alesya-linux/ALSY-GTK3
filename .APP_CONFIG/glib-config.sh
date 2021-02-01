@@ -20,6 +20,8 @@ if [ -d ../build/$sapp ]; then
  fi
 fi
 
+export GIT_SSL_NO_VERIFY=true
+
 mkdir -p ../build &&
 tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
@@ -31,6 +33,9 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then        
     patch -Np1 -i ../glib-2.66.4-skip_warnings-1.patch &&
     mkdir -p ../glib_build &&
+    python3 -m pip install -U pip &&
+    python3 -m pip install -U meson &&    
+    python3 -m pip install -U ninja &&
     meson --prefix=$GTK3_PREFIX \
           -Dman=true            \
           -Dselinux=disabled    \
