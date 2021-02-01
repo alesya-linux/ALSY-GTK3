@@ -1,0 +1,8 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/nspr && make
+install:
+	cd ../build/${app}/nspr && make DESTDIR=${GTK3_PREFIX} install
+clean:
+	rm -rfd ../build/${app}

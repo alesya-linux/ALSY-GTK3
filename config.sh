@@ -213,6 +213,10 @@ case $packagedir in
     cp -r $APP_CONFIG/nspr-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/nspr-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
+  nss* )
+    cp -r $APP_CONFIG/nss-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp -r $APP_MAKEFILE/nss-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   cmake* )
     cp -r $APP_CONFIG/cmake-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/cmake-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
