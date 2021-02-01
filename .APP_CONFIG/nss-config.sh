@@ -25,12 +25,17 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then         
-    cd nspr                                                     &&
-    sed -ri 's#^(RELEASE_BINS =).*#\1#' pr/src/misc/Makefile.in &&
-    sed -i 's#$(LIBRARY) ##'            config/rules.mk         &&
-    ./configure --prefix=/usr   \
-                --with-mozilla  \
-                --with-pthreads \
-                $([ $(uname -m) = x86_64 ] && echo --enable-64bit)
+    if [ ! -f nss-3.61-standalone-1.patch ]; then
+      wget http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.61-standalone-1.patch
+    fi
+    patch -Np1 -i ../nss-3.61-standalone-1.patch &&
+    cd nss &&
+    make -j1 BUILD_OPT=1                  \
+      NSPR_INCLUDE_DIR=/usr/include/nspr  \
+      USE_SYSTEM_ZLIB=1                   \
+      ZLIB_LIBS=-lz                       \
+      NSS_ENABLE_WERROR=0                 \
+      $([ $(uname -m) = x86_64 ] && echo USE_64=1) \
+      $([ -f /usr/include/sqlite3.h ] && echo NSS_USE_SYSTEM_SQLITE=1)
   fi
 fi
