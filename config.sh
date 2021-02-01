@@ -197,6 +197,10 @@ case $packagedir in
     cp $APP_CONFIG/atk-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/atk-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
+  at*spi2* )
+    cp $APP_CONFIG/at-spi2-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp -r $APP_MAKEFILE/at-spi2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
 esac
 
 
