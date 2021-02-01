@@ -1,11 +1,21 @@
 #!/bin/make
 app="@alsy.app.name"
 .PHONY: compile install
-.IGNORE: clean
+.IGNORE: clean prepare
 compile:
 	cd ../build/glib_build && ninja
 install:
 	cd ../build/glib_build && ninja install
+	$(MAKE) prepare
 	$(MAKE) clean
+prepare:
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libffi* ${GTK3_PREFIX}/lib
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /lib
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /lib64
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /usr/lib
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /usr/lib64
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /usr/local/lib
+	cd ${GTK3_PREFIX}/lib   && cp -rLd libffi* /usr/local/lib64
+	ldconfig
 clean:
 	rm -rfd ../build/glib_build
