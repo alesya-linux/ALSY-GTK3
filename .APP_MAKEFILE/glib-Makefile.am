@@ -6,6 +6,28 @@ compile:
 	cd ../build/glib_build && ninja
 install:
 	cd ../build/glib_build && ninja install
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgio-2.0*     /usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libglib-2.0*    /usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgmodule-2.0* /usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgobject-2.0* /usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgthread-2.0* /usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgio-2.0*     /usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libglib-2.0*    /usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgmodule-2.0* /usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgobject-2.0* /usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgthread-2.0* /usr/lib64 
+	mkdir -p ${GTK3_PREFIX}/usr/lib
+	mkdir -p ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgio-2.0*     ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libglib-2.0*    ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgmodule-2.0* ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgobject-2.0* ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgthread-2.0* ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgio-2.0*     ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libglib-2.0*    ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgmodule-2.0* ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgobject-2.0* ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgthread-2.0* ${GTK3_PREFIX}/usr/lib64	
 	$(MAKE) prepare
 	$(MAKE) clean
 prepare:
