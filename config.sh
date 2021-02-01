@@ -201,6 +201,10 @@ case $packagedir in
     cp $APP_CONFIG/at-spi2-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/at-spi2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
+  libjpeg*turbo* )
+    cp -r $APP_CONFIG/libjpegturbo-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp -r $APP_MAKEFILE/libjpegturbo-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
 esac
 
 
