@@ -8,6 +8,10 @@ compile:
 install:
 	$(MAKE) prepare
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
+	mkdir -p ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* /usr/lib64
+	ldconfig
 prepare:
 	cd ../build/${app} && make install
 	ldconfig
