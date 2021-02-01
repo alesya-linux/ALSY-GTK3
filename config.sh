@@ -205,6 +205,10 @@ case $packagedir in
     cp -r $APP_CONFIG/libjpegturbo-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/libjpegturbo-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
+  cmake* )
+    cp -r $APP_CONFIG/cmake-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp -r $APP_MAKEFILE/cmake-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
 esac
 
 
