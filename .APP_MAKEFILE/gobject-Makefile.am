@@ -6,15 +6,16 @@ compile:
 	cd ../build/gobj_build && ninja
 install:
 	cd ../build/gobj_build && ninja install
+	cd ${GTK3_PREFIX}/lib64 && cp -rLd libgirepository-1.0* ${GTK3_PREFIX}/lib
 	$(MAKE) prepare
 	$(MAKE) clean
 prepare:
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so /lib
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so /lib64
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so /usr/lib
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so /usr/lib64
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so ${GTK3_PREFIX}/lib64
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so ${GTK3_PREFIX}/usr/lib
-	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0.so ${GTK3_PREFIX}/usr/lib64
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* /lib
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* /lib64
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* /usr/lib
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* /usr/lib64
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* ${GTK3_PREFIX}/usr/lib
+	cd ${GTK3_PREFIX}/lib && cp -rLd libgirepository-1.0* ${GTK3_PREFIX}/usr/lib64
+	ldconfig
 clean:
 	rm -rfd ../build/gobj_build
