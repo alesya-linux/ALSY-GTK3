@@ -172,7 +172,7 @@ case $packagedir in
   ;;
   libxml2* )
     cp $APP_CONFIG/libxml2-config.sh $APP_COMPILE/$packagedir/config.sh    
-    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp $APP_MAKEFILE/libxml2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
     if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
       cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
     fi
