@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget https://archive.mozilla.org/pub/nspr/releases/v4.29/src/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
