@@ -28,8 +28,11 @@ if [ $? -eq 0 ]; then
     if [ ! -f nss-3.61-standalone-1.patch ]; then
       wget http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.61-standalone-1.patch
     fi
+    mv nss-3.61-standalone-1.patch .. &&
     patch -Np1 -i ../nss-3.61-standalone-1.patch &&
     cd nss &&
+    export CC="/usr/bin/gcc"  &&
+    export CXX="/usr/bin/g++" &&
     make -j1 BUILD_OPT=1                  \
       NSPR_INCLUDE_DIR=/usr/include/nspr  \
       USE_SYSTEM_ZLIB=1                   \

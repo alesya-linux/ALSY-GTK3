@@ -4,5 +4,6 @@ compile:
 	cd ../build/${app}/nspr && make
 install:
 	cd ../build/${app}/nspr && make DESTDIR=${GTK3_PREFIX} install
+	cd ../build/${app}/nspr && make DESTDIR=/ install
 clean:
 	rm -rfd ../build/${app}
