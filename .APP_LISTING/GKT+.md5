@@ -9,3 +9,7 @@ f43d661d39ff52d33622cb1854aaaf76  gobject-introspection-1.66.1.tar.xz
 01aa5ec5138f5f8c9b3a4e3196ed2900  atk-2.36.0.tar.xz
 ae060dc0a042822b3f07c786c5d5aab7  at-spi2-core-2.38.0.tar.xz
 aed95be54ef213d210331dda88298b92  at-spi2-atk-2.38.0.tar.xz
+1beefafe8963982adc84b408b2959927  libssh2-1.9.0.tar.gz
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  nspr-4.29.tar.gz
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  cmake-3.19.3.tar.gz
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  libjpeg-turbo-2.0.6.tar.gz
