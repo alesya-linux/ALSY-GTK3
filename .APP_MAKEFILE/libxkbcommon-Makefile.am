@@ -2,8 +2,8 @@
 app="@alsy.app.name"
 INSTALLDIR=${GTK3_PREFIX}
 compile:
-	cd ../build/${app}/../pango_build && ninja
+	cd ../build/${app}/../libxkbcommon && ninja
 install:
-	cd ../build/${app}/../pango_build && ninja install
+	cd ../build/${app}/../libxkbcommon && ninja install
 clean:
 	rm -rfd ../build/${app}
