@@ -25,6 +25,9 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    meson --prefix=/usr -Dupdate-mimedb=true
+    rm -rfd ../shminfo_build &&
+    mkdir -p ../shminfo_build &&
+    meson --prefix=${GTK3_PREFIX}/usr -Dupdate-mimedb=true \
+    ../shminfo_build
   fi
 fi
