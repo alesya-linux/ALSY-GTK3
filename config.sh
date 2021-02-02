@@ -203,6 +203,7 @@ case $packagedir in
   ;;
   libuv* )
     cp -r $APP_CONFIG/libuv-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libuv-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
   libjpeg*turbo* )
     cp -r $APP_CONFIG/libjpegturbo-config.sh $APP_COMPILE/$packagedir/config.sh    
