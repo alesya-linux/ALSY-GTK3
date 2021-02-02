@@ -2,41 +2,10 @@
 app="@alsy.app.name"
 INSTALLDIR=${GTK3_PREFIX}
 .PHONY:  compile install 
-.IGNORE: prepare clean
+.IGNORE: clean
 compile:
 	cd ../build/${app} && make 
 install:
-	$(MAKE) prepare
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
-	mkdir -p ${GTK3_PREFIX}/usr/lib64
-	mkdir -p ${GTK3_PREFIX}/lib
-	mkdir -p ${GTK3_PREFIX}/lib64
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* ${GTK3_PREFIX}/usr/lib64
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* ${GTK3_PREFIX}/lib
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* ${GTK3_PREFIX}/lib64
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* /usr/lib64	
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* /lib
-	cd ${GTK3_PREFIX}/usr/lib && cp -rLd libxml2* /lib64
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /usr/local/lib/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /usr/local/lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /usr/lib/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc /lib/pkgconfig
-	mkdir -p ${GTK3_PREFIX}/usr/local/lib64/pkgconfig
-	mkdir -p ${GTK3_PREFIX}/usr/lib64/pkgconfig
-	mkdir -p ${GTK3_PREFIX}/lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc ${GTK3_PREFIX}/usr/local/lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc ${GTK3_PREFIX}/usr/lib64/pkgconfig
-	cp -rLd ${GTK3_PREFIX}/usr/lib/pkgconfig/libxml-2.0.pc ${GTK3_PREFIX}/lib64/pkgconfig		
-	cp -rLd ${GTK3_PREFIX}/usr/include/libxml2    /include
-	cp -rLd ${GTK3_PREFIX}/usr/include/libxml2    /usr/include
-	cp -rLd ${GTK3_PREFIX}/usr/include/libxml2/*  /include
-	cp -rLd ${GTK3_PREFIX}/usr/include/libxml2/*  /usr/include	
-	cp -rLd ${GTK3_PREFIX}/usr/include/libxml2/* ${GTK3_PREFIX}/usr/include	
-	ldconfig
-prepare:
-	cd ../build/${app} && make DESTDIR=/ install
-	ldconfig
 clean:
 	rm -rd ../build

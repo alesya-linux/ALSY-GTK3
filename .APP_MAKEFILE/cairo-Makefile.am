@@ -6,10 +6,6 @@ INSTALLDIR=${GTK3_PREFIX}
 compile:
 	cd ../build/${app} && make 
 install:
-	$(MAKE) prepare
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
-prepare:
-	cd ../build/${app} && make install
-	ldconfig
 clean:
 	rm -rd ../build
