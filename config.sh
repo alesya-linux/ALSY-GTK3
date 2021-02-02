@@ -201,6 +201,10 @@ case $packagedir in
     cp $APP_CONFIG/at-spi2-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/at-spi2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
+  xmlto* )
+    cp -r $APP_CONFIG/xmlto-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/xmlto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   itstool* )
     cp -r $APP_CONFIG/itstool-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/itstool-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
