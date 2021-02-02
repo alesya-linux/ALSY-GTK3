@@ -11,5 +11,6 @@ GTK3_PREFIX="$GTK3_PREFIX"
 export GTK3_PREFIX
 ALSY_GTK3="1.0.0"
 export ALSY_GTK3
+export LD_LIBRARY_PATH="/usr/lib:$XORG_PREFIX/lib64"
 EOF
 chmod u=rwx,g=rx,o=x $GTK3_PREFIX/etc/profile.d/$fileprofile
