@@ -21,6 +21,8 @@ if [ -d ../build/$sapp ]; then
  fi
 fi
 
+export GIT_SSL_NO_VERIFY=true
+
 mkdir -p ../build &&
 tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
