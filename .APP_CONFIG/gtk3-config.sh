@@ -1,6 +1,7 @@
 #!/bin/bash
 app="${PWD##*/}"
 version="${app##*-}"
+lversion="${version%.*}"
 app="${app%-*}"
 arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
