@@ -214,6 +214,10 @@ case $packagedir in
     cp -r $APP_CONFIG/gdkpixbuf-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/gdkpixbuf-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
+  gtk* )
+    cp -r $APP_CONFIG/gtk3-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/gtk3-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   cairo* )
     cp -r $APP_CONFIG/cairo-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/cairo-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
