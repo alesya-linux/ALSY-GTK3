@@ -25,7 +25,6 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    LINKS="/usr/bin/links" \
-    ./configure --prefix=/usr
+    meson --prefix=/usr -Dupdate-mimedb=true
   fi
 fi
