@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget http://files.itstool.org/itstool/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget https://releases.pagure.org/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
@@ -25,6 +25,7 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    PYTHON=/usr/bin/python3 ./configure --prefix=/usr
+    LINKS="/usr/bin/links" \
+    ./configure --prefix=/usr
   fi
 fi
