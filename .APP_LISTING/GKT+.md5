@@ -1,7 +1,7 @@
 #ea591dfbcbc3aa44029ca66d6abf8070  icu-release-68-2.tar.gz
 #bbd8baaf328fc8e906fbb0efc3a5be1e  expat-2.2.10.tar.gz
 #dfe8a71f412e0b53be26ed4fbfdc91c4  dbus-1.12.20.tar.gz
-#x0942a1dc23137a8aa07f0639cbfece5  libxml2-2.9.10.tar.gz
+#10942a1dc23137a8aa07f0639cbfece5  libxml2-2.9.10.tar.gz
 #db8765c8d076f1b6caafd9f2542a304a  libxslt-1.1.34.tar.gz
 #db08bb384e81968957f997ec9808926e  libunistring-0.9.10.tar.xz
 #2df4576b1e4acfd118867eebb41d9956  glib-2.66.4.tar.xz
@@ -10,7 +10,8 @@
 #ae060dc0a042822b3f07c786c5d5aab7  at-spi2-core-2.38.0.tar.xz
 #aed95be54ef213d210331dda88298b92  at-spi2-atk-2.38.0.tar.xz
 #1beefafe8963982adc84b408b2959927  libssh2-1.9.0.tar.gz
-#a546926d3c8e887be02c668c1293da92  nspr-4.29.tar.gz
-e07573e1c0e1e5bef7c05075f8dfa46d  nss-3.61.tar.gz
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  cmake-3.19.3.tar.gz
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  libjpeg-turbo-2.0.6.tar.gz
+libuv-v1.40.0.tar.gz
+##a546926d3c8e887be02c668c1293da92  nspr-4.29.tar.gz
+##e07573e1c0e1e5bef7c05075f8dfa46d  nss-3.61.tar.gz
+##XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  cmake-3.19.3.tar.gz
+##XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  libjpeg-turbo-2.0.6.tar.gz

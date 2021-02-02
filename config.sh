@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -200,6 +200,9 @@ case $packagedir in
   at*spi2* )
     cp $APP_CONFIG/at-spi2-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/at-spi2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libuv* )
+    cp -r $APP_CONFIG/libuv-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   libjpeg*turbo* )
     cp -r $APP_CONFIG/libjpegturbo-config.sh $APP_COMPILE/$packagedir/config.sh    
