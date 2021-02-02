@@ -205,6 +205,10 @@ case $packagedir in
     cp -r $APP_CONFIG/shminfo-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/shminfo-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
+  gdk*pixbuf* )
+    cp -r $APP_CONFIG/gdkpixbuf-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/gdkpixbuf-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   xmlto* )
     cp -r $APP_CONFIG/xmlto-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/xmlto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  

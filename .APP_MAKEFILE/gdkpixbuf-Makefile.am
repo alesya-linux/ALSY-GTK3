@@ -1,0 +1,9 @@
+#!/bin/make
+app="@alsy.app.name"
+INSTALLDIR=${GTK3_PREFIX}
+compile:
+	cd ../build/${app}/../shminfo_build && ninja
+install:
+	cd ../build/${app}/../shminfo_build && ninja install
+clean:
+	rm -rfd ../build/${app}
