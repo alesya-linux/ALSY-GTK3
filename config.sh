@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -213,6 +213,10 @@ case $packagedir in
   gdk*pixbuf* )
     cp -r $APP_CONFIG/gdkpixbuf-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/gdkpixbuf-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
+  wayland* )
+    cp -r $APP_CONFIG/wayland-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/wayland-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
   gtk* )
     cp -r $APP_CONFIG/gtk3-config.sh $APP_COMPILE/$packagedir/config.sh
