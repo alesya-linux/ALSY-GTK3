@@ -201,6 +201,10 @@ case $packagedir in
     cp $APP_CONFIG/at-spi2-config.sh $APP_COMPILE/$packagedir/config.sh    
     cp -r $APP_MAKEFILE/at-spi2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
+  itstool* )
+    cp -r $APP_CONFIG/itstool-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/itstool-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   libuv* )
     cp -r $APP_CONFIG/libuv-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/libuv-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
