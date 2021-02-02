@@ -218,6 +218,10 @@ case $packagedir in
     cp -r $APP_CONFIG/wayland-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/wayland-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
+  libxkbcommon* )
+    cp -r $APP_CONFIG/libxkbcommon-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libxkbcommon-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
   gtk* )
     cp -r $APP_CONFIG/gtk3-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/gtk3-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
