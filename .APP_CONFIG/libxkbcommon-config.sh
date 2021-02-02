@@ -31,7 +31,7 @@ if [ $? -eq 0 ]; then
     python3 -m pip install -U pip &&
     python3 -m pip install -U meson &&
     python3 -m pip install -U ninja &&
-    meson --prefix=${GTK3_PREFIX}/usr -Denable-docs=false \
+    meson --prefix=${GTK3_PREFIX} -Denable-docs=false \
     ../libxkbcommon
   fi
 fi

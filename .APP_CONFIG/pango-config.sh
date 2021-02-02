@@ -30,7 +30,7 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     rm -rfd ../pango_build &&
     mkdir -p ../pango_build &&
-    meson --prefix=${GTK3_PREFIX}/usr \
+    meson --prefix=${GTK3_PREFIX} \
     ../pango_build
   fi
 fi

@@ -5,7 +5,5 @@ compile:
 	cd ../build/${app}/../libxkbcommon && ninja
 install:
 	cd ../build/${app}/../libxkbcommon && ninja install
-	cd ${GTK3_PREFIX}/usr/lib64 && cp -rLd libxkb* /usr/lib64
-	ldconfig
 clean:
 	rm -rfd ../build/${app}
