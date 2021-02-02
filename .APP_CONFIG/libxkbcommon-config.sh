@@ -28,6 +28,9 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     rm -rfd ../libxkbcommon &&
     mkdir -p ../libxkbcommon &&
+    python3 -m pip install -U pip &&
+    python3 -m pip install -U meson &&
+    python3 -m pip install -U ninja &&
     meson --prefix=${GTK3_PREFIX}/usr -Denable-docs=false \
     ../libxkbcommon
   fi
