@@ -27,7 +27,7 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     rm -rfd ../pixbuf_build &&
     mkdir -p ../pixbuf_build &&
-    meson --prefix=${GTK3_PREFIX}/usr -Dupdate-mimedb=true \
+    meson --prefix=${GTK3_PREFIX}/usr \
     ../pixbuf_build
   fi
 fi
