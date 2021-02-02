@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -217,6 +217,10 @@ case $packagedir in
   cairo* )
     cp -r $APP_CONFIG/cairo-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/cairo-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
+  pango* )
+    cp -r $APP_CONFIG/pango-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/pango-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
   xmlto* )
     cp -r $APP_CONFIG/xmlto-config.sh $APP_COMPILE/$packagedir/config.sh
