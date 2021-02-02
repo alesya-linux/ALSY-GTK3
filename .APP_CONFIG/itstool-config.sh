@@ -24,12 +24,7 @@ mkdir -p ../build &&
 tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
-  if [ $? -eq 0 ]; then         
-ACLOCAL=""
-export ACLOCAL  
-    if [ -x autogen.sh ]; then
-      ./autogen.sh 
-    fi &&
-    ./configure --prefix=/usr --disable-static
+  if [ $? -eq 0 ]; then
+    PYTHON=/usr/bin/python3 ./configure --prefix=/usr
   fi
 fi
