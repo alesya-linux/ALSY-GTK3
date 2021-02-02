@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -44,6 +44,11 @@ ACLOCAL="aclocal -I $GTK3_PREFIX/share/aclocal"
 export ACLOCAL
 export LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 export GTK3_PREFIX
+
+if [ ${ALSY_XORG} == "" ]; then
+  echo "Error ALSY-XORG-7 version 1.0.5 or newer not found!"
+  exit 1
+fi
 
 MD5SUMFILE=""
 APPLICATION_SITE=""
