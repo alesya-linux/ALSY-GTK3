@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget https://releases.pagure.org/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget http://anduin.linuxfromscratch.org/BLFS/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
@@ -25,7 +25,9 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    LINKS="/usr/bin/links" \
-    ./configure --prefix=/usr
+    autoreconf -fv              &&
+    ./configure --prefix=/usr    \
+                --disable-static \
+                --enable-tee
   fi
 fi
