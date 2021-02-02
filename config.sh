@@ -44,6 +44,7 @@ ACLOCAL="aclocal -I $GTK3_PREFIX/share/aclocal"
 export ACLOCAL
 export LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 export GTK3_PREFIX
+export LD_LIBRARY_PATH="$GTK3_PREFIX/usr/lib:$GTK3_PREFIX/lib:$GTK3_PREFIX/usr/lib64:$GTK3_PREFIX/lib64"
 
 if [ ${ALSY_XORG} == "" ]; then
   echo "Error ALSY-XORG-7 version 1.0.5 or newer not found!"
