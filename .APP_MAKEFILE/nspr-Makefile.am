@@ -5,5 +5,11 @@ compile:
 install:
 	cd ../build/${app}/nspr && make DESTDIR=${GTK3_PREFIX} install
 	cd ../build/${app}/nspr && make DESTDIR=/ install
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libnspr4.so  /lib
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libplc4.so   /lib
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libplds4.so  /lib
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libnspr4.so  /lib64
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libplc4.so   /lib64
+	cp -rLd ${GTK3_PREFIX}/usr/lib/libplds4.so  /lib64
 clean:
 	rm -rfd ../build/${app}
