@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/GTK+-3.24.24"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -30,7 +30,7 @@ sed 's/\${INSTALLDIR}/'$INSTALLDIR'/' Makefile.am > Makefile
 
 SAVEPATH="$PATH"
 APKG_CONFIG_PATH="$XORG_PREFIX/lib64/pkgconfig:$GTK3_PREFIX/lib64/pkgconfig:$GTK3_PREFIX/lib/pkgconfig:$GTK3_PREFIX/usr/share/pkgconfig"
-BPKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$APKG_CONFIG_PATH"
+BPKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$APKG_CONFIG_PATH:$GTK3_PREFIX/usr/lib/pkgconfig"
 export PKG_CONFIG_PATH="$XORG_PREFIX/lib/pkgconfig:$BPKG_CONFIG_PATH" 
 export PATH="$GTK3_PREFIX/bin:$PATH"
 
