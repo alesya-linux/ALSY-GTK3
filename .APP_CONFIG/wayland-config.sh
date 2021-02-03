@@ -26,7 +26,7 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-./configure --prefix=/usr    \
+./configure --prefix=/       \
             --disable-static \
             --disable-documentation
   fi
