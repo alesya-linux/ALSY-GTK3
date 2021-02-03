@@ -7,5 +7,7 @@ compile:
 	cd ../build/${app} && make 
 install:
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
+	cd ${GTK3_PREFIX} && cp -rLd include/libxml2/* /include
+	cd ${GTK3_PREFIX} && ln -s ../include/libxml2/libxml include/libxml
 clean:
 	rm -rd ../build
