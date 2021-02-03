@@ -2,14 +2,10 @@
 app="@alsy.app.name"
 INSTALLDIR=${GTK3_PREFIX}
 .PHONY:  compile install 
-.IGNORE: prepare clean
+.IGNORE: clean
 compile:
 	cd ../build/${app} && make 
 install:
-	$(MAKE) prepare
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
-prepare:
-	cd ../build/${app} && make install
-	ldconfig
 clean:
 	rm -rd ../build

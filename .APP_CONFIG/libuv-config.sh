@@ -30,6 +30,6 @@ export ACLOCAL
     if [ -x autogen.sh ]; then
       ./autogen.sh 
     fi &&
-    ./configure --prefix=/usr --disable-static
+    ./configure --prefix=/ --disable-static
   fi
 fi
