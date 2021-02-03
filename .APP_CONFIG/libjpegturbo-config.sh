@@ -25,7 +25,7 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then         
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -DCMAKE_INSTALL_PREFIX=/    \
           -DCMAKE_BUILD_TYPE=RELEASE  \
           -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$sapp \
           -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib 
