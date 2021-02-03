@@ -26,7 +26,7 @@ if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
     autoreconf -fv              &&
-    ./configure --prefix=/usr    \
+    ./configure --prefix=/       \
                 --disable-static \
                 --enable-tee
   fi
