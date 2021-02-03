@@ -6,6 +6,7 @@ INSTALLDIR=${GTK3_PREFIX}
 compile:
 	cd ../build/${app} && make 
 install:
+	cd ../build/${app} && make install
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
 	cd ${GTK3_PREFIX}  && cp -rLd include/cairo /include
 clean:
