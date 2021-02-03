@@ -2,12 +2,15 @@
 app="@alsy.app.name"
 INSTALLDIR=${GTK3_PREFIX}
 .PHONY:  compile install 
-.IGNORE: clean
+.IGNORE: clean prepare
 compile:
 	cd ../build/${app} && make 
 install:
 	cd ../build/${app} && make DESTDIR=${INSTALLDIR} install
-	cd ${GTK3_PREFIX} && cp -rLd include/libxml2/* /include
+	$(MAKE) prepare
+prepare:
+	cd ${GTK3_PREFIX} && rm -rfd include/libxml
 	cd ${GTK3_PREFIX} && ln -s ../include/libxml2/libxml include/libxml
+	cd ${GTK3_PREFIX} && cp -rLd include/libxml2/* /include
 clean:
 	rm -rd ../build
