@@ -27,7 +27,7 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     rm -rfd ../shminfo_build &&
     mkdir -p ../shminfo_build &&
-    meson --prefix=${GTK3_PREFIX}/usr -Dupdate-mimedb=true \
+    meson --prefix=${GTK3_PREFIX} -Dupdate-mimedb=true \
     ../shminfo_build
   fi
 fi
