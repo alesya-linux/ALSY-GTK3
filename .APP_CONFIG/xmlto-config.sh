@@ -26,6 +26,6 @@ if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
     LINKS="/usr/bin/links" \
-    ./configure --prefix=/usr
+    ./configure --prefix=/
   fi
 fi

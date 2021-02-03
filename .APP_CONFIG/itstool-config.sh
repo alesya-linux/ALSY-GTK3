@@ -25,6 +25,6 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    PYTHON=/usr/bin/python3 ./configure --prefix=/usr
+    PYTHON=/usr/bin/python3 ./configure --prefix=/
   fi
 fi
