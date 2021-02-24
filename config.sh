@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG="X"          # This is Flag compile for file GTK+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/ALSY-GTK3"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -128,7 +128,7 @@ popd
 }
 
 if [ "$ETAP1_FLAG" == "X" ]; then
-COMPILEFILE="$APP_LISTING/GKT+.md5"
+COMPILEFILE="$APP_LISTING/GTK+.md5"
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do  
   packagedir=${package%.tar.*}
