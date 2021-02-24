@@ -1,6 +1,6 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG=" "          # This is Flag compile for file GKT+.md5
+ETAP1_FLAG="X"          # This is Flag compile for file GKT+.md5
 CHECK_MD5SUM_FLAG="X"
 GTK3_PREFIX="/usr/src/tools/ALSY-GTK3"
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -47,7 +47,7 @@ export GTK3_PREFIX
 export LD_LIBRARY_PATH="$GTK3_PREFIX/usr/lib:$GTK3_PREFIX/lib:$GTK3_PREFIX/usr/lib64:$GTK3_PREFIX/lib64"
 
 if [ "${ALSY_XORG}" == "" ]; then
-  echo "Error ALSY-XORG-7 version 1.0.5 or newer not found!"
+  echo "Error ALSY-XORG-7 version 1.0.6 or newer not found!"
   exit 1
 fi
 
