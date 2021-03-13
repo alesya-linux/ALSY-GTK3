@@ -1,0 +1,13 @@
+#!/bin/bash
+export GIT_SSL_NO_VERIFY=true
+git config --global user.email semen_s84@mail.ru 
+git config --global user.name semsv
+
+if [ "$1" == "commit" ]; then
+  git commit -m "$(date)"
+  exit 0
+fi
+
+if [ "$1" != "" ]; then
+  git $1 $2 $3
+fi
