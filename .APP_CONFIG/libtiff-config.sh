@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget http://download.osgeo.org/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget http://download.osgeo.org/lib$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
