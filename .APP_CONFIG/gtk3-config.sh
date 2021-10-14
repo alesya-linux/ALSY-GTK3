@@ -26,7 +26,7 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
-    ./configure --prefix=$GTK3_PREFIX           \
+    ./configure --prefix=/                      \
                 --sysconfdir=/etc               \
                 --enable-broadway-backend       \
                 --enable-x11-backend            \
