@@ -26,8 +26,12 @@ if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then
     autoreconf -fv              &&
-    ./configure --prefix=/       \
-                --disable-static \
-                --enable-tee
+    ./configure --prefix=/         \
+                --disable-static   \
+                --enable-tee       \
+                --enable-xlib-xcb  \
+                --enable-gl        \
+                --enable-xml       \
+                --libdir=/lib64
   fi
 fi
