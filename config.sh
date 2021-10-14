@@ -89,7 +89,7 @@ make_install()
 {
 LASTPATH="$PATH"
 PATH="$SAVEPATH"
-as_root make install
+as_root make GTK3_PREFIX=${GTK3_PREFIX} install
 check_last "make install"
 # Add Log
 Add_Log
