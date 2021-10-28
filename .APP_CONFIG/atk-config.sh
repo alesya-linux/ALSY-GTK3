@@ -29,9 +29,6 @@ if [ $? -eq 0 ]; then
   rm -rfd ../atk_build
   if [ $? -eq 0 ]; then    
     mkdir -p ../atk_build &&
-    python3 -m pip install -U pip &&
-    python3 -m pip install -U meson &&    
-    python3 -m pip install -U ninja &&
     meson --prefix=$GTK3_PREFIX \
     ../atk_build
   fi

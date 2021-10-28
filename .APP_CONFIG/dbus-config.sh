@@ -18,7 +18,7 @@ app="$app-$version"
 sed 's/@alsy.app.name/'$app'/g' "Makefile.am" > "Makefile"
 
 if [ -d ../build/$app ]; then
- rm -rfd ../build/$app
+ sudo rm -rfd ../build/$app
  if [ $? -eq 0 ]; then
    echo "clean .. [ ok ]"
  else
@@ -44,7 +44,7 @@ if [ $? -eq 0 ]; then
                 --with-systemdsystemunitdir=no                       \
                 --docdir=$PREFIX/share/doc/$app-$version             \
                 --with-console-auth-dir=/var/run/ConsoleKit          \
-                --with-system-pid-file=/var/run/dbus/pid             \
+                --with-system-pid-file=/var/run/dbus/dbus.pid        \
                 --with-system-socket=/var/run/dbus/system_bus_socket
   fi
 fi

@@ -27,6 +27,6 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then         
     ./configure --prefix=/       \
                 --disable-static \
-                --docdir=$GTK3_PREFIX/share/doc/libunistring-$version
+                --docdir=/share/doc/libunistring-$version
   fi
 fi

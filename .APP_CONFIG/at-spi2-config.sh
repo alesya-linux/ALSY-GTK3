@@ -29,9 +29,6 @@ if [ $? -eq 0 ]; then
   rm -rfd ../at_spi2_build
   if [ $? -eq 0 ]; then    
     mkdir -p ../at_spi2_build &&
-    python3 -m pip install -U pip &&
-    python3 -m pip install -U meson &&    
-    python3 -m pip install -U ninja &&
     meson --prefix=$GTK3_PREFIX \
     ../at_spi2_build
   fi

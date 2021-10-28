@@ -1,12 +1,13 @@
 #!/bin/bash
 app="${PWD##*/}"
 version="${app##*-}"
+lversion="${version%.*}"
 app="${app%-*}"
 arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget https://downloads.sourceforge.net/$app/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget https://download.gnome.org/sources/$app/$lversion/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
@@ -24,10 +25,9 @@ mkdir -p ../build &&
 tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
-  if [ $? -eq 0 ]; then         
-    cmake -DCMAKE_INSTALL_PREFIX=/                            \
-          -DCMAKE_BUILD_TYPE=RELEASE                          \
-          -DCMAKE_INSTALL_DOCDIR=/share/doc/$sapp             \
-          -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib 
+  if [ $? -eq 0 ]; then
+    sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
+    -i docs/{faq,tutorial}/Makefile.in      &&
+    ./configure --prefix=/ --sysconfdir=/etc
   fi
 fi

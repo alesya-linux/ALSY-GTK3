@@ -10,6 +10,9 @@
 # pidfile: /var/run/dbus/pid
 #
 
+# Sanity checks.
+#[ -x /usr/src/tools/dbus-1.12.18/bin/dbus-daemon ] || exit 0
+
 # Source function library.
 #. /etc/rc.d/init.d/functions
 
@@ -19,55 +22,49 @@
 
 #RETVAL=0
 
-start() {       
-    dbus_run_already="0"
-    dbus_version="$(dbus-daemon --version | grep -i bus | cut -d" " -f5)"
+start() {    
+    #********** BEG BLOCK 1: SPECIAL SCRIPTS ALESYA LINUX FOR STARTING D-BUS ****    
+    echo "*******************************************************"
     echo "*** ALESYA (ALSY) LINUX: $(less /etc/alsy-version) ****"
-    echo "*** ALSY - Starting system message bus..."
-    echo "**********************************"
-    # проверяем что D-BUS еще не запущен
-    if [ "`pgrep dbus-daemon`" = "" ]; then 
-      echo "*** ALSY - remove dbus temporary files..."
-      rm -r /var/run/dbus/pid 2>/dev/null
-      rm -r /var/run/dbus/dbus.pid 2>/dev/null      
-      dbus_run_already="1"
-    fi
-    if [ "$GTK3_PREFIX" == "" ]; then
-      sh /etc/profile.d/ALSY-GTK3.sh
-    fi
-    if [ "$GTK3_PREFIX" == "" ]; then
-      export GTK3_PREFIX=$(cat /etc/profile.d/ALSY-GTK3.sh | grep GTK+ | sed 's/GTK3_PREFIX=//' | sed 's/\"//g')
-    fi
-    chown root:messagebus $GTK3_PREFIX/libexec/dbus-daemon-launch-helper;
-    chmod 4750 $GTK3_PREFIX/libexec/dbus-daemon-launch-helper;    
-    echo "$(dbus-daemon --version | grep -i bus)" 
-    echo "**********************************"    
-    if [ "$(echo "$dbus_run_already")" == "1" ];
+    echo "*** ALSY - Starting system message bus... $(dbus-daemon --version | grep -i bus) ****"
+    echo "*******************************************************"            
+    #********** END BLOCK 1: SPECIAL SCRIPTS ALESYA LINUX FOR STARTING D-BUS ****
+    if [ "$(echo "$dbus_run_already")" == "0" ];
     then
       echo -e "*** ALSY - Start Message Bus ..................................\e[32m[OK]\e[0m ***"
-      if [ -x $GTK3_PREFIX/bin/dbus-uuidgen ] ; then
-        $GTK3_PREFIX/bin/dbus-uuidgen --ensure
+      if [ -x /usr/src/tools/dbus-$dbus_version/bin/dbus-uuidgen ] ; then
+         /usr/src/tools/dbus-$dbus_version/bin/dbus-uuidgen --ensure
       fi
 
-      if [ -x $GTK3_PREFIX/bin/dbus-daemon ];then
-        $GTK3_PREFIX/bin/dbus-daemon --system
+      if [ -x /usr/src/tools/dbus-$dbus_version/bin/dbus-daemon ];then
+         /usr/src/tools/dbus-$dbus_version/bin/dbus-daemon --system
+         dbus_run_already="1"
       fi
-    fi 
-        
-    if [ "$(ls -l /var/run/dbus | grep --regexp=pid"$")" != "" ]; 
-    then 
-      cp -r /var/run/dbus/pid /var/run/dbus/dbus.pid 
-    fi     
+    fi        
 }
 
 stop() {
+  dbus_version="$(dbus-daemon --version | grep -i bus | cut -d " " -f5)"
+  dbus_run_already="$(ps -x | grep dbus-daemon | grep -v grep)"
+  #if [ "$dbus_run_already" != "" ]; then
     echo "Stopping system message bus"
+    ## we don't want to kill all the per-user $processname, we want
+    ## to use the pid file *only*; because we use the fake nonexistent 
+    ## program name "$servicename" that should be safe-ish
     killall dbus-daemon
+    #if [ $? -eq 0 ]; then
+      rm -f /var/run/dbus/dbus.pid    
+      chown root:messagebus /usr/src/tools/dbus-$dbus_version/libexec/dbus-daemon-launch-helper
+      chmod 4750 /usr/src/tools/dbus-$dbus_version/libexec/dbus-daemon-launch-helper
+      dbus_run_already="0"
+    #fi
+  #fi
 }
 
 # See how we were called.
 case "$1" in
     start)
+        stop
         start
         ;;
     stop)

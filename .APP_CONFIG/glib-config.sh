@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget https://download.gnome.org/sources/$app/2.66/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget https://download.gnome.org/sources/glib/2.70/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
@@ -33,11 +33,9 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then        
     patch -Np1 -i ../glib-2.66.4-skip_warnings-1.patch &&
     mkdir -p ../glib_build &&
-    python3 -m pip install -U pip &&
-    python3 -m pip install -U meson &&    
-    python3 -m pip install -U ninja &&
     meson --prefix=$GTK3_PREFIX \
           -Dman=true            \
+          -Diconv=external      \
           -Dselinux=disabled    \
     ../glib_build
   fi

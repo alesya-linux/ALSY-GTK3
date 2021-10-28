@@ -6,7 +6,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget ftp://ftp.acc.umu.se/pub/gnome/sources/gobject-introspection/1.66/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget ftp://ftp.acc.umu.se/pub/gnome/sources/gobject-introspection/1.70/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
