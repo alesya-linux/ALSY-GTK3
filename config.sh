@@ -127,6 +127,31 @@ make_install
 popd
 }
 
+install_python_modules="false"
+if [ "$install_python_modules" == "true" ]; then
+  ln -sfv /home/alesya/Public/python python_modules &&
+  pushd python_modules/setuptools-58.0.4  &&
+    python3 setup.py build                &&
+    sudo python3 setup.py install --optimize=1 &&
+  popd                                    &&
+  
+  pushd python_modules/pip-21.2.4         &&
+    python3 setup.py build                &&
+    sudo  python3 setup.py install --optimize=1 &&
+  popd                                    &&
+  
+  pushd python_modules/meson-0.59.1       &&
+    python3 setup.py build                &&
+    sudo python3 setup.py install --optimize=1 &&
+  popd 
+  
+  pushd python_modules/ninja-1.10.2       &&
+  ./compile.sh                            && 
+  popd
+  btrue=true
+  sed -i 's/install_python_modules="'$btrue'"/install_python_modules="false"/' config.sh
+fi
+
 if [ "$ETAP1_FLAG" == "X" ]; then
 COMPILEFILE="$APP_LISTING/GTK+.md5"
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
@@ -226,6 +251,10 @@ case $packagedir in
   libxkbcommon* )
     cp -r $APP_CONFIG/libxkbcommon-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/libxkbcommon-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
+  gtk+-2* )
+    cp -r $APP_CONFIG/gtk2-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/gtk2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
   ;;
   gtk* )
     cp -r $APP_CONFIG/gtk3-config.sh $APP_COMPILE/$packagedir/config.sh
