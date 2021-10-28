@@ -5,6 +5,7 @@ BUILD="build"
 PREFIX_X=${PREFIX}
 INSTALL_DIR=${INSTALLDIR}
 all:
+	touch ${PREFIX_X}
 	mkdir -p .install
 install:
 	mv -t .install ${PREFIX_X}
